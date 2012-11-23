@@ -1,0 +1,14 @@
+<template name="transaction">
+    <tr>
+        <td class="rightCell">{{date}}</td>
+        {{#unless isOnTab}}
+            <td>
+                <a href="/{{client_id}}">{{client_symbol}}</a>
+            </td>
+        {{/unless}}
+        <td>{{account_symbol}}</td>
+        <td class="rightCell">{{amount}}</td>
+        <td class="rightCell">{{balance}}</td>
+        <td>{{comment}}</td>
+    </tr>
+</template>

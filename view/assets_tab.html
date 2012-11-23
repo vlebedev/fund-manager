@@ -1,0 +1,68 @@
+<template name="assets_tab">
+    <p class="lead">Market value, USD: <strong>{{total_assets}}</strong></p>
+    <div class="span8">
+
+        <p><h4>Fund Assets</h4>
+                
+        <table class="table table-bordered table-condesed table-hover">
+            <thead>
+                <tr>
+                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th><th style="width: 20px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each fund_assets}}
+                    {{> fund_asset}}
+                {{/each}}
+            </tbody>
+        </table>
+
+        <div class="input-append">
+            <input type="text" class="input-small" id="fund-account-symbol" placeholder="F001"/>
+            <input type="submit" class="btn btn-primary" id="add-fund-account-btn" value="Add"/>
+        </div>
+        <div id="fund-error-alert"></div>
+
+        <p><h4>Stock Assets</h4>
+            
+        <table class="table table-bordered table-condesed table-hover">
+            <thead>
+                <tr>
+                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th><th style="width: 20px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each stock_assets}}
+                    {{> stock_asset}}
+                {{/each}}
+            </tbody>
+        </table>
+
+        <div class="input-append">
+            <input type="text" class="input-small" id="stock-account-symbol" placeholder="RTKM.ME"/>
+            <input type="submit" class="btn btn-primary" id="add-stock-account-btn" value="Add"/>
+        </div>
+        <div id="stock-error-alert"></div>
+
+        <p><h4>Monetary Assets</h4>
+        
+        <table class="table table-bordered table-condesed table-hover">
+            <thead>
+                <tr>
+                    <th>Symbol</th><th>Amount</th><th style="width: 20px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each monetary_assets}}
+                    {{> monetary_asset}}
+                {{/each}}
+            </tbody>
+        </table>
+
+        <div class="input-append">
+            <input type="text" class="input-small" id="monetary-account-symbol" placeholder="CHF"/>
+            <input type="submit" class="btn btn-primary" id="add-monetary-account-btn" value="Add"/>
+        </div>
+        <div id="monetary-error-alert"></div>
+    </div>
+</template>

@@ -1,0 +1,41 @@
+<template name="stock">
+    <tr class="stock">
+        <td class="{{stock_class}}">
+            {{#if isUnlisted}}
+                <div class=" text-warning">{{symbol}}</div>
+            {{else}}
+                <a href="http://finance.yahoo.com/q?s={{symbol}}">{{symbol}}</a>
+            {{/if}}
+        </td>
+        <td class="{{stock_class}}">
+            {{name}}
+        </td>
+        <td class="rightCell {{stock_class}}">
+
+            {{#if editing}}
+                <div class="edit">
+                    <input class="last-trade-input input-small" id="#{{editing}}" type="text" value="{{lastTrade}}" />
+                </div>
+            {{else}}
+                <div class="display">
+                    {{lastTrade}}
+                </div>
+            {{/if}}
+
+        </td>
+        <td class="rightCell {{stock_class}}">
+            {{prevClose}}
+        </td>
+        <td class="{{stock_class}}">
+            {{exchange}}
+        </td>
+        <td class="{{stock_class}}">
+            {{currency}}
+        </td>
+        <td>
+            <i class="remove icon-remove" id="remove-stock" rel="tooltip" data-original-title="Delete stock">
+            </i>
+        </td>
+    </tr>
+    {{enable_tooltips}}
+</template>

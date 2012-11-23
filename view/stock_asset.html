@@ -1,0 +1,18 @@
+<template name="stock_asset">
+    <tr>
+        <td>
+            <a href="http://finance.yahoo.com/q?s={{symbol}}">{{symbol}}</a>
+        </td>
+        <td class="rightCell">
+            {{amount}}
+        </td>
+        <td class="rightCell">
+            {{value}}
+        </td>
+        <td>
+            <i class="remove icon-remove" id="remove-stock-account" rel="tooltip" data-original-title="Delete stock account">
+            </i>
+        </td>
+    </tr>
+    {{enable_tooltips}}
+</template>

@@ -1,0 +1,8 @@
+<template name="client_chooser">
+       <label>Client: </label>
+       <select class="client-select">
+              {{#each t_clients}}
+                  <option>{{symbol}}</option>
+              {{/each}}
+      </select>
+</template>

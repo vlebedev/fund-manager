@@ -1,0 +1,35 @@
+<template name="transactions_tab">
+    <div class="span10">
+
+        <label>Account:</label>
+        <select class="account-select">
+            {{#each assets}}
+                <option>{{symbol}}</option>
+            {{/each}}
+        </select>
+        
+        <label>Comment:</label>
+            <input type="text" class="input-xlarge" id="transaction-comment" placeholder="Say few words about the transaction"/>
+        <label>Amount:</label>
+
+        <div class="input-append">
+            <input type="text" class="input-medium" id="transaction-amount" placeholder="-1000"/>
+            <input type="submit" class="btn btn-primary" id="add_trans_on_trans_btn" value="Execute"/>
+        </div>
+
+        <h4>Transactions</h4>
+
+        <table class="table table-bordered table-condesed table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th><th>Account</th><th>Amount</th><th>Balance</th><th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each transactions}}
+                    {{> transaction}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
