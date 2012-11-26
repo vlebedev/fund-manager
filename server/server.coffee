@@ -73,11 +73,11 @@ Meteor.publish 'price_changes', ->
 
 Meteor.startup ->
 
-    Assets.remove()
-    Clients.remove()
-    Instruments.remove()
-    Transactions.remove()
-    Meteor.users.remove()
+    # Assets.remove()
+    # Clients.remove()
+    # Instruments.remove()
+    # Transactions.remove()
+    # Meteor.users.remove()
 
     Accounts.createUser {
         username: "dev"
