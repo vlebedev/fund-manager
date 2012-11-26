@@ -1,22 +1,22 @@
 <template name="transactions_tab">
     <div class="span10">
+        {{#if isAdmin}}
+            <label>Account:</label>
+            <select class="account-select">
+                {{#each assets}}
+                    <option>{{symbol}}</option>
+                {{/each}}
+            </select>
+            
+            <label>Comment:</label>
+                <input type="text" class="input-xlarge" id="transaction-comment" placeholder="Say few words about the transaction"/>
+            <label>Amount:</label>
 
-        <label>Account:</label>
-        <select class="account-select">
-            {{#each assets}}
-                <option>{{symbol}}</option>
-            {{/each}}
-        </select>
-        
-        <label>Comment:</label>
-            <input type="text" class="input-xlarge" id="transaction-comment" placeholder="Say few words about the transaction"/>
-        <label>Amount:</label>
-
-        <div class="input-append">
-            <input type="text" class="input-medium" id="transaction-amount" placeholder="-1000"/>
-            <input type="submit" class="btn btn-primary" id="add_trans_on_trans_btn" value="Execute"/>
-        </div>
-
+            <div class="input-append">
+                <input type="text" class="input-medium" id="transaction-amount" placeholder="-1000"/>
+                <input type="submit" class="btn btn-primary" id="add_trans_on_trans_btn" value="Execute"/>
+            </div>
+        {{/if}}
         <h4>Transactions</h4>
 
         <table class="table table-bordered table-condesed table-hover">

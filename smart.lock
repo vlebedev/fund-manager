@@ -2,17 +2,29 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "68dafc94c5f1eb6cf2350ee74e9f65130f665bc5"
+    "commit": "16cf8a26218ae4650eb36b25ee55c2b5f6a71a31"
   },
   "dependencies": {
     "basePackages": {
-      "sugar": {}
+      "sugar": {},
+      "observatory": {},
+      "accounting": {}
     },
     "packages": {
       "sugar": {
         "git": "https://github.com/bevanhunt/meteor-sugar.git",
         "tag": "v0.0.9",
         "commit": "751a4465e0a7d7e4e800e794ca1e6a449e15e63d"
+      },
+      "observatory": {
+        "git": "https://github.com/jhoxray/observatory.git",
+        "tag": "v0.1.8",
+        "commit": "08188f96361dbdbec1855ee616bbb4c03543b1ea"
+      },
+      "accounting": {
+        "git": "https://github.com/IainShigeoka/meteor-accounting.git",
+        "tag": "v0.3.2.3",
+        "commit": "330cf532e6ac7282cf85ef3b83a54c1a25f5bdae"
       }
     }
   }

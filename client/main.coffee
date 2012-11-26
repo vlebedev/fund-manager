@@ -53,6 +53,12 @@ _.extend Template.main,
                 when 'c' then 'client'
                 when 'f' then 'fund'
 
+    isDeveloper: ->
+        Meteor.users.findOne(Meteor.user())?.username is 'dev'
+
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
+
 ##
 ## Lists
 #######################################
@@ -72,7 +78,7 @@ _.extend Template.main,
     t_assets: ->
         client_id = Session.get 'trans_client_id'
         if client_id
-            Accounts.find { client_id }, { sort : { symbol: 1 } }
+            Assets.find { client_id }, { sort : { symbol: 1 } }
 
 ##
 ## Template event handlers
@@ -132,7 +138,7 @@ Template.main.events {
         symbol = $('.account-select :selected').val()
         comment = $('#transaction-comment').val()
         client_id = Clients.findOne({ symbol: client })?._id
-        account_id = Accounts.findOne({ client_id, symbol })?._id
+        account_id = Assets.findOne({ client_id, symbol })?._id
 
         if account_id and amount
             Meteor.call 'executeTransaction', account_id, Number(amount), comment,
@@ -183,7 +189,7 @@ Template.main.events okCancelEvents '#transaction-amount', {
         symbol = $('.account-select :selected').val()
         comment = $('#transaction-comment').val()
         client_id = Clients.findOne({ symbol: client })?._id
-        account_id = Accounts.findOne({ client_id, symbol })?._id
+        account_id = Assets.findOne({ client_id, symbol })?._id
 
         if account_id and amount
             Meteor.call 'executeTransaction', account_id, Number(amount), comment,

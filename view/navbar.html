@@ -2,15 +2,22 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
                 <a class="brand" href="#">Fund Manager</a>
-                <div class="nav-collapse collapse">
-                    <p class="navbar-text pull-right">Logged in as<a href="#" class="navbar-link">Username</a></p>
-                </div>
+                {{#if currentUser}}
+                    <div class="btn-group pull-right">
+
+                        <button class="btn btn-inverse">Logged in as {{currentUser.username}}</button>
+                         <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a tabindex="-1" class="logout" href="#">Logout</a></li>
+                        </ul>
+
+                    </div>
+                {{/if}}
+                {{#unless currentUser}}
+                    <p class="navbar-text pull-right">{{loginButtons align="right"}}</p>
+                {{/unless}}
             </div>
         </div>
     </div>

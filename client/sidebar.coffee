@@ -30,6 +30,10 @@ _.extend Template.sidebar,
     add_new_fund_selected: ->
         Session.get 'add_new_fund_selected'
 
+    isAdmin: ->
+        devId = Meteor.users?.findOne({ username: "dev" })?._id
+        adminId = Meteor.users?.findOne({ username: "admin" })?._id
+        (devId && (Meteor.userId() is devId)) || (adminId && (Meteor.userId() is adminId))
 
 ##
 ## Template event handlers

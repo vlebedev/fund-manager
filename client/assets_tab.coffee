@@ -4,42 +4,46 @@ _.extend Template.assets_tab,
 ## Computed fields and field formatters
 #######################################
 
-total_assets: ->
+    total_assets: ->
         client_id = Session.get 'client_id'
-        client = Clients.findOne(client_id)
+        client = Clients.findOne client_id
+        # TL.verbose "client_id: #{client?._id} #{client?.symbol}", "ASSETS_TAB"
         accounting.formatNumber getClientTotalAssetsValue(client.symbol), 2 if client
+
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
 
 ##
 ## Lists
 #######################################
 
-    # All client's accounts
+    # All client's Assets
     assets: ->
         client_id = Session.get 'client_id'
 
         if client_id
-            Accounts.find { client_id }, { sort : { symbol: 1 } }
+            Assets.find { client_id }, { sort : { symbol: 1 } }
 
-    # Only monetary accounts
+    # Only monetary Assets
     monetary_assets: ->
         client_id = Session.get 'client_id'
 
         if client_id
-            Accounts.find { client_id, type: 'm' }, { sort : { symbol: 1 } }
+            Assets.find { client_id, type: 'm' }, { sort : { symbol: 1 } }
 
-    # Only stock accounts
+    # Only stock Assets
     stock_assets: ->
         client_id = Session.get 'client_id'
 
         if client_id
-            Accounts.find { client_id, type: 's' }, { sort : { symbol: 1 } }
+            Assets.find { client_id, type: 's' }, { sort : { symbol: 1 } }
 
-    # Only fund accounts
+    # Only fund Assets
     fund_assets: ->
         client_id = Session.get 'client_id'
 
         if client_id
-            Accounts.find { client_id, type: 'f' }, { sort : { symbol: 1 } }
+            Assets.find { client_id, type: 'f' }, { sort : { symbol: 1 } }
 
 Template.assets_tab.events {
 

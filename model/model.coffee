@@ -1,4 +1,4 @@
-## Accounts -- {
+## Assets -- {
 ##    client_id: String
 ##    symbol: String
 ##    type: Boolean             # 's' - stock, 'm' - monetary, 'f' - fund
@@ -6,7 +6,7 @@
 ##    date_opened: Date
 ## }
 
-Accounts = new Meteor.Collection 'accounts'
+Assets = new Meteor.Collection 'assets'
 
 ## Clients -- {
 ##     symbol: String
@@ -45,7 +45,9 @@ Instruments = new Meteor.Collection 'instruments'
 ##     comment: String
 ## }
 
-Transactions = new Meteor.Collection 'Transactions'
+Transactions = new Meteor.Collection 'transactions'
+
+TL = TLog.getLogger TLog.LOGLEVEL_MAX, true
 
 getFxRate = (symbol1, symbol2) ->
     fx = Instruments.findOne({ symbol: "#{symbol1}#{symbol2}=X" })
@@ -61,18 +63,21 @@ getAssetValueInUSD = (clientSymbol, symbol, amount) ->
     return 0 unless instrument
 
     switch instrument.type
+
         when 's'
 
             return instrument.lastTrade * amount if instrument.currency is 'USD'
 
             conversionRate = getFxRate instrument.currency, 'USD'
             instrument.lastTrade * amount * conversionRate
+
         when 'm'
 
             return amount if instrument.symbol is 'USD'
 
             conversionRate = getFxRate instrument.symbol, 'USD'
             amount * conversionRate
+
         when 'f'
 
             return 0 if symbol is clientSymbol    # don't count fund's own shares
@@ -81,22 +86,26 @@ getAssetValueInUSD = (clientSymbol, symbol, amount) ->
 
 getClientTotalAssetsValue = (symbol) ->
     client = Clients.findOne { symbol }
-    accounts = Accounts.find({ client_id: client._id }).fetch()
-    total = 0
+    
+    if client
+        assets = Assets.find({ client_id: client._id })?.fetch()
+        total = 0
 
-    for account in accounts
-        total += getAssetValueInUSD client.symbol, account.symbol, account.amount
+        if assets
+            for asset in assets
+                total += getAssetValueInUSD client.symbol, asset.symbol, asset.amount
+            return total
 
-    total
+    0
 
 getClientTotalNonMonetaryAssetsValue = (symbol) ->
     client = Clients.findOne { symbol }
-    accounts = Accounts.find({ client_id: client._id }).fetch()
+    assets = Assets.find({ client_id: client._id }).fetch()
     total = 0
 
-    for account in accounts
+    for asset in assets
         if account.type isnt 'm'
-            total += getAssetValueInUSD client.symbol, account.symbol, account.amount
+            total += getAssetValueInUSD client.symbol, asset.symbol, asset.amount
 
     total
 
@@ -298,11 +307,11 @@ Meteor.methods {
 
         return "Client <strong>#{symbol}</strong> is not registered." unless client
 
-        return "Cannot delete client or fund <strong>#{symbol}</strong>, because it has active accounts." if Accounts.find({ client_id: client._id }).count()
+        return "Cannot delete client or fund <strong>#{symbol}</strong>, because it has active accounts." if Assets.find({ client_id: client._id }).count()
 
         if client.type is 'f'
             return "Cannot delete fund <strong>#{symbol}</strong>, because it has active shares." if Instruments.findOne({ symbol }).shares
-            return "Cannot delete fund <strong>#{symbol}</strong>, there is at least one client with account opened in #{symbol} shares." if Accounts.find({ symbol }).count()
+            return "Cannot delete fund <strong>#{symbol}</strong>, there is at least one client with account opened in #{symbol} shares." if Assets.find({ symbol }).count()
             Instruments.remove { symbol }
 
         Clients.remove { symbol }
@@ -320,12 +329,12 @@ Meteor.methods {
             when 'x'
                 c1 = symbol.slice(0,3)
                 c2 = symbol.slice(3,6)
-                if Accounts.find({ symbol : c1 }).count() and c2 is 'USD'
+                if Assets.find({ symbol : c1 }).count() and c2 is 'USD'
                     return "Cannot delete <strong>#{symbol}</strong> because there is at least one client's account opened in <strong>#{c1}</strong>."
                 else
                     Instruments.remove { symbol: c1 }
             when 'm', 's'
-                if Accounts.find({ symbol }).count()
+                if Assets.find({ symbol }).count()
                     return "Cannot delete <strong>#{symbol}</strong> because there is at least one client's account opened in <strong>#{symbol}</strong>."
             when 'f'
                 return 'Cannot delete <strong>funds</strong> here.'
@@ -341,10 +350,10 @@ Meteor.methods {
 
         if instrument
             
-            if Accounts.find({ client_id, symbol : instrument.symbol }).count()
+            if Assets.find({ client_id, symbol : instrument.symbol }).count()
                 return "Cannot add <strong>#{symbol}</strong> account because it already exists."
             else
-                Accounts.insert { client_id, symbol, type: instrument.type, amount: 0, date_registered: new Date() }
+                Assets.insert { client_id, symbol, type: instrument.type, amount: 0, date_registered: new Date() }
 
         else
             return "Cannot add <strong>#{symbol}</strong> account because there is no <strong>#{symbol}</strong> instrument registered in the system."
@@ -355,11 +364,11 @@ Meteor.methods {
         transactionsCount = Transactions.find({ account_id: account._id }).count()
         return "Cannot remove <strong>#{account.symbol}</strong> account which is not empty." if account.amount isnt 0
         return "Cannot remove <strong>#{account.symbol}</strong> because it has <strong>#{transactionsCount}</strong> linked transaction(s)." if transactionsCount
-        Accounts.remove account._id
+        Assets.remove account._id
         'ok'
 
     'executeTransaction': (account_id, amount, comment) ->
-        account = Accounts.findOne account_id
+        account = Assets.findOne account_id
 
         return "Account doesn't exist." unless account
 
@@ -367,7 +376,7 @@ Meteor.methods {
 
         return "Amount of fund's shares cannot be negative." if account.type is 'f' and newBalance < 0
 
-        Accounts.update account_id, $inc: { amount }
+        Assets.update account_id, $inc: { amount }
 
         if account.type is 'f'
             fundAssetsValue = getClientTotalAssetsValue account.symbol
@@ -375,8 +384,6 @@ Meteor.methods {
             
             if fundNewTotalShares is 0
                 divider = 1
-
-            console.log divider
 
             if newBalance > 0
                 Instruments.update { symbol: account.symbol }, {
@@ -398,9 +405,12 @@ Meteor.methods {
                         client_list: account.client_id 
                     }
                 }
+        
+        date = new Date()
+        # TL.verbose "Transaction timestamp: #{date.getTime()}", "EXECUTE_TRANSACTION"
 
         Transactions.insert {
-            date: new Date()
+            date
             client_id: account.client_id
             account_id
             amount
@@ -415,7 +425,7 @@ Meteor.methods {
         account_id = lastTransaction.account_id
 
         if lastTransaction
-            account = Accounts.findOne account_id
+            account = Assets.findOne account_id
 
             if account.type is 'f'
                 fundAssetsValue = getClientTotalAssetsValue account.symbol
@@ -440,7 +450,7 @@ Meteor.methods {
                         }
                     }
 
-            Accounts.update account_id, { $inc: { amount: -amount } }
+            Assets.update account_id, { $inc: { amount: -amount } }
             Transactions.remove lastTransaction._id
 
         'ok'

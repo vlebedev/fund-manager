@@ -9,10 +9,12 @@
         <td class="rightCell">
             {{value}}
         </td>
-        <td>
-            <i class="remove icon-remove" id="remove-stock-account" rel="tooltip" data-original-title="Delete stock account">
-            </i>
-        </td>
+        {{#if isAdmin}}
+            <td>
+                <i class="remove icon-remove" id="remove-stock-account" rel="tooltip" data-original-title="Delete stock account">
+                </i>
+            </td>
+        {{/if}}
     </tr>
     {{enable_tooltips}}
 </template>

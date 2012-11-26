@@ -13,6 +13,9 @@ _.extend Template.fund_asset,
     enable_tooltips: ->
         _.defer (-> $('[rel=tooltip]').tooltip()), ''
 
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
+
 ##
 ## Template event handlers
 #######################################

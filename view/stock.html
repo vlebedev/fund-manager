@@ -1,5 +1,5 @@
 <template name="stock">
-    <tr class="stock">
+    <tr class="stock {{color}}">
         <td class="{{stock_class}}">
             {{#if isUnlisted}}
                 <div class=" text-warning">{{symbol}}</div>
@@ -32,10 +32,12 @@
         <td class="{{stock_class}}">
             {{currency}}
         </td>
-        <td>
-            <i class="remove icon-remove" id="remove-stock" rel="tooltip" data-original-title="Delete stock">
-            </i>
-        </td>
+        {{#if isAdmin}}
+            <td>
+                <i class="remove icon-remove" id="remove-stock" rel="tooltip" data-original-title="Delete stock">
+                </i>
+            </td>
+        {{/if}}
     </tr>
     {{enable_tooltips}}
 </template>

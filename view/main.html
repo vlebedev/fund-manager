@@ -1,5 +1,4 @@
 <template name="main">
-
     <div class="span9">
 
         <div id="alert-area"></div>
@@ -16,9 +15,11 @@
                 <li class="transactions-tab">
                     <a href="#client-transactions-tab-data">Transactions</a>
                 </li>
-                <li class="admin-tab">
-                    <a href="#admin-tab-data">Admin</a>
-                </li>
+                {{#if isAdmin}}
+                    <li class="admin-tab">
+                        <a href="#admin-tab-data">Admin</a>
+                    </li>
+                {{/if}}
             </ul>
 
             <div class="tab-content">
@@ -28,9 +29,11 @@
                 <div class="tab-pane" id="client-transactions-tab-data">
                     {{> transactions_tab}}
                 </div>
-                <div class="tab-pane" id="admin-tab-data">
-                    {{> admin_tab}}
-                </div>
+                {{#if isAdmin}}
+                    <div class="tab-pane" id="admin-tab-data">
+                        {{> admin_tab}}
+                    </div>
+                {{/if}}
             </div>
         {{/if}}
 
@@ -41,7 +44,9 @@
                 <thead>
                     <tr>
                         <th>Symbol</th><th>Name</th><th>Last Trade</th><th>Previous Close</th><th>Exchange</th><th>Currency</th>
-                        <th style="width: 20px"></th>
+                        {{#if isAdmin}}
+                            <th style="width: 20px"></th>
+                        {{/if}}
                     </tr>
                 </thead>
                 <tbody>
@@ -51,25 +56,26 @@
                 </tbody>
             </table>
             
-            <a href="#" class="pull-right text-warning" id="add-unlisted-dialog"><small>Add unlisted stock...</small></a>
+            {{#if isAdmin}}
+                <a href="#" class="pull-right text-warning" id="add-unlisted-dialog"><small>Add unlisted stock...</small></a>
 
-            {{#if unlisted_dialog}}
-            <div class="well">
-                <p><input type="text" class="input-medium" id="new_unlisted_symbol" placeholder="STOCK CODE"/></p>
-                <p><input type="text" class="input-large" id="new_unlisted_name" placeholder="STOCK NAME"/></p>
-                <p><input type="text" class="input-large" id="new_unlisted_currency" placeholder="STOCK CURRENCY"/></p>
-                <p><input type="text" class="input-large" id="new_unlisted_last" placeholder="LAST TRADE PRICE"/></p>
-                <p><input type="submit" class="btn btn-primary" id="add-unlisted-btn" value="Add Unlisted Stock"/></p>
-            </div>
+                {{#if unlisted_dialog}}
+                <div class="well">
+                    <p><input type="text" class="input-medium" id="new_unlisted_symbol" placeholder="STOCK CODE"/></p>
+                    <p><input type="text" class="input-large" id="new_unlisted_name" placeholder="STOCK NAME"/></p>
+                    <p><input type="text" class="input-large" id="new_unlisted_currency" placeholder="STOCK CURRENCY"/></p>
+                    <p><input type="text" class="input-large" id="new_unlisted_last" placeholder="LAST TRADE PRICE"/></p>
+                    <p><input type="submit" class="btn btn-primary" id="add-unlisted-btn" value="Add Unlisted Stock"/></p>
+                </div>
+                {{/if}}
+                
+                {{#unless unlisted_dialog}}
+                <div class="input-append">
+                    <input type="text" class="input-small" id="stock-symbol" placeholder="RTKM.ME"/>
+                    <input type="submit" class="btn btn-primary" id="add-stock-btn" value="Add"/>
+                </div>
+                {{/unless}}
             {{/if}}
-            
-            {{#unless unlisted_dialog}}
-            <div class="input-append">
-                <input type="text" class="input-small" id="stock-symbol" placeholder="RTKM.ME"/>
-                <input type="submit" class="btn btn-primary" id="add-stock-btn" value="Add"/>
-            </div>
-            {{/unless}}
-
         {{/if}}
 
         {{#if fx_selected}}
@@ -78,7 +84,10 @@
             <table class="table table-condensed table-hover table-bordered" id="fx-table">
                 <thead>
                     <tr>
-                        <th>Symbol</th><th>Last Trade</th><th style="width: 20px"></th>
+                        <th>Symbol</th><th>Last Trade</th>
+                        {{#if isAdmin}}
+                            <th style="width: 20px"></th>
+                        {{/if}}
                     </tr>
                 </thead>
                 <tbody>
@@ -87,11 +96,12 @@
                     {{/each}}
                 </tbody>
             </table>
-
-            <div class="input-append">
-                <input type="text" class="input-medium" id="fxpair-symbol" placeholder="CHFUSD or CHF"/>
-                <input type="submit" class="btn btn-primary" id="add-fxpair-btn" value="Add"/>
-            </div>
+            {{#if isAdmin}}
+                <div class="input-append">
+                    <input type="text" class="input-medium" id="fxpair-symbol" placeholder="CHFUSD or CHF"/>
+                    <input type="submit" class="btn btn-primary" id="add-fxpair-btn" value="Add"/>
+                </div>
+            {{/if}}
         {{/if}}
 
         {{#if funds_selected}}
@@ -148,7 +158,5 @@
                 </tbody>
             </table>
         {{/if}}
-
     </div>
-
 </template>

@@ -6,10 +6,12 @@
         <td class="rightCell">
             {{amount}}
         </td>
-        <td>
-            <i class="remove icon-remove" id="remove-monetary-account" rel="tooltip" data-original-title="Delete monetary account">
-            </i>
-        </td>
+        {{#if isAdmin}}
+            <td>
+                <i class="remove icon-remove" id="remove-monetary-account" rel="tooltip" data-original-title="Delete monetary account">
+                </i>
+            </td>
+        {{/if}}
     </tr>
     {{enable_tooltips}}
 </template>

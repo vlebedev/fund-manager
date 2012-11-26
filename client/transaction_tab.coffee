@@ -1,15 +1,18 @@
 _.extend Template.transactions_tab,
 
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
+
 ##
 ## Lists
 #######################################
 
-    # All client's accounts
+    # All client's Assets
     assets: ->
         client_id = Session.get 'client_id'
 
         if client_id
-            Accounts.find { client_id }, { sort : { symbol: 1 } }
+            Assets.find { client_id }, { sort : { symbol: 1 } }
 
     transactions: ->
         client_id = Session.get 'client_id'
@@ -26,7 +29,7 @@ Template.transactions_tab.events {
         client_id = Session.get 'client_id'
         symbol = $('.account-select :selected').val()
         comment = $('#transaction-comment').val()
-        account_id = Accounts.findOne({ client_id, symbol })?._id
+        account_id = Assets.findOne({ client_id, symbol })?._id
 
         if account_id and amount
             Meteor.call 'executeTransaction', account_id, Number(amount), comment,
@@ -44,7 +47,7 @@ Template.transactions_tab.events okCancelEvents '#transaction-amount', {
         client_id = Session.get 'client_id'
         symbol = $('.account-select :selected').val()
         comment = $('#transaction-comment').val()
-        account_id = Accounts.findOne({ client_id, symbol })?._id
+        account_id = Assets.findOne({ client_id, symbol })?._id
 
         if account_id and amount
             Meteor.call 'executeTransaction', account_id, Number(amount), comment,

@@ -4,10 +4,10 @@ _.extend Template.transaction,
         Date.create(@date).format("{yyyy}.{MM}.{dd} {HH}:{mm}:{ss}")
 
     client_symbol: ->
-        Clients.findOne(@client_id).symbol
+        Clients.findOne(@client_id)?.symbol
 
     account_symbol: ->
-        Accounts.findOne(@account_id).symbol
+        Assets.findOne(@account_id)?.symbol
 
     amount: ->
         accounting.formatNumber @amount, 2
@@ -17,3 +17,7 @@ _.extend Template.transaction,
 
     isOnTab: ->
         Session.get 'client_id'
+
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
+

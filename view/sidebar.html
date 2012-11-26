@@ -9,12 +9,14 @@
                     <a href="/{{_id}}">{{symbol}}</a>
                 </li>
             {{/each}}
-            <li class="nav-header">
-                TRANSACTIONS
-            </li>
-            <li class="transactions {{transactions_selected}}">
-                <a href="/transactions">Transactions Manager</a>
-            </li>
+            {{#if isAdmin}}
+                <li class="nav-header">
+                    TRANSACTIONS
+                </li>
+                <li class="transactions {{transactions_selected}}">
+                    <a href="/transactions">Transactions Manager</a>
+                </li>
+            {{/if}}
             <li class="nav-header">
                 INSTRUMENTS & MARKET DATA
             </li>
@@ -27,24 +29,26 @@
             <li class="funds {{funds_selected}}">
                 <a href="/funds">Funds</a>
             </li>
-            <li class="nav-header">
-                ADMIN
-            </li>
-            <li class="add-new-client {{add_new_client_selected}}">
-                <a href="#">Add new client</a>
-            </li>
-            {{#if add_new_client_selected}}
-                <p></p><p><input type="text" class="input-medium" id="new_client_symbol" placeholder="CLIENT CODE"/>
-                <input type="text" class="input-large" id="new_client_name" placeholder="CLIENT NAME"/>
-                <input type="submit" class="btn btn-small btn-primary" id="add-client-btn" value="Add"/></p>
-            {{/if}}
-            <li class="add-new-fund {{add_new_fund_selected}}">
-                <a href="#">Add new fund</a>
-            </li>
-            {{#if add_new_fund_selected}}
-                <p></p><p><input type="text" class="input-medium" id="new_fund_symbol" placeholder="FUND CODE"/>
-                <input type="text" class="input-large" id="new_fund_name" placeholder="FUND NAME"/>
-                <input type="submit" class="btn btn-small btn-primary" id="add-fund-btn" value="Add"/></p>
+            {{#if isAdmin}}
+                <li class="nav-header">
+                    ADMIN
+                </li>
+                <li class="add-new-client {{add_new_client_selected}}">
+                    <a href="#">Add new client</a>
+                </li>
+                {{#if add_new_client_selected}}
+                    <p></p><p><input type="text" class="input-medium" id="new_client_symbol" placeholder="CLIENT CODE"/>
+                    <input type="text" class="input-large" id="new_client_name" placeholder="CLIENT NAME"/>
+                    <input type="submit" class="btn btn-small btn-primary" id="add-client-btn" value="Add"/></p>
+                {{/if}}
+                <li class="add-new-fund {{add_new_fund_selected}}">
+                    <a href="#">Add new fund</a>
+                </li>
+                {{#if add_new_fund_selected}}
+                    <p></p><p><input type="text" class="input-medium" id="new_fund_symbol" placeholder="FUND CODE"/>
+                    <input type="text" class="input-large" id="new_fund_name" placeholder="FUND NAME"/>
+                    <input type="submit" class="btn btn-small btn-primary" id="add-fund-btn" value="Add"/></p>
+                {{/if}}
             {{/if}}
         </ul>
     </div>

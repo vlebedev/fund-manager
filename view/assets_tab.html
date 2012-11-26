@@ -7,7 +7,10 @@
         <table class="table table-bordered table-condesed table-hover">
             <thead>
                 <tr>
-                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th><th style="width: 20px"></th>
+                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th>
+                    {{#if isAdmin}}
+                        <th style="width: 20px"></th>
+                    {{/if}}
                 </tr>
             </thead>
             <tbody>
@@ -16,19 +19,22 @@
                 {{/each}}
             </tbody>
         </table>
-
-        <div class="input-append">
-            <input type="text" class="input-small" id="fund-account-symbol" placeholder="F001"/>
-            <input type="submit" class="btn btn-primary" id="add-fund-account-btn" value="Add"/>
-        </div>
-        <div id="fund-error-alert"></div>
-
+        {{#if isAdmin}}
+            <div class="input-append">
+                <input type="text" class="input-small" id="fund-account-symbol" placeholder="F001"/>
+                <input type="submit" class="btn btn-primary" id="add-fund-account-btn" value="Add"/>
+            </div>
+            <div id="fund-error-alert"></div>
+        {{/if}}
         <p><h4>Stock Assets</h4>
             
         <table class="table table-bordered table-condesed table-hover">
             <thead>
                 <tr>
-                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th><th style="width: 20px"></th>
+                    <th>Symbol</th><th>Amount</th><th>Mkt Value, USD</th>
+                    {{#if isAdmin}}
+                        <th style="width: 20px"></th>
+                    {{/if}}
                 </tr>
             </thead>
             <tbody>
@@ -37,19 +43,22 @@
                 {{/each}}
             </tbody>
         </table>
-
-        <div class="input-append">
-            <input type="text" class="input-small" id="stock-account-symbol" placeholder="RTKM.ME"/>
-            <input type="submit" class="btn btn-primary" id="add-stock-account-btn" value="Add"/>
-        </div>
-        <div id="stock-error-alert"></div>
-
+        {{#if isAdmin}}
+            <div class="input-append">
+                <input type="text" class="input-small" id="stock-account-symbol" placeholder="RTKM.ME"/>
+                <input type="submit" class="btn btn-primary" id="add-stock-account-btn" value="Add"/>
+            </div>
+            <div id="stock-error-alert"></div>
+        {{/if}}
         <p><h4>Monetary Assets</h4>
         
         <table class="table table-bordered table-condesed table-hover">
             <thead>
                 <tr>
-                    <th>Symbol</th><th>Amount</th><th style="width: 20px"></th>
+                    <th>Symbol</th><th>Amount</th>
+                    {{#if isAdmin}}
+                        <th style="width: 20px"></th>
+                    {{/if}}
                 </tr>
             </thead>
             <tbody>
@@ -58,11 +67,12 @@
                 {{/each}}
             </tbody>
         </table>
-
+        {{#if isAdmin}}
         <div class="input-append">
             <input type="text" class="input-small" id="monetary-account-symbol" placeholder="CHF"/>
             <input type="submit" class="btn btn-primary" id="add-monetary-account-btn" value="Add"/>
         </div>
         <div id="monetary-error-alert"></div>
+        {{/if}}
     </div>
 </template>

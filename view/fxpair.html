@@ -1,15 +1,17 @@
 <template name="fxpair">
-    <tr class="fxpair">
+    <tr class="fxpair {{color}}">
         <td class="destroy">
             <a href="http://finance.yahoo.com/q?s={{symbol}}">{{symbol}}</a>
         </td>
         <td class="rightCell">
             {{lastTrade}}
         </td>
-        <td>
-            <i class="remove icon-remove" id="remove-fxpair" rel="tooltip" data-original-title="Delete FX pair">
-            </i>
-        </td>
+        {{#if isAdmin}}
+            <td>
+                <i class="remove icon-remove" id="remove-fxpair" rel="tooltip" data-original-title="Delete FX pair">
+                </i>
+            </td>
+        {{/if}}
     </tr>
     {{enable_tooltips}}
 </template>

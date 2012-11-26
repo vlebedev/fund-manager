@@ -1,5 +1,7 @@
 {
   "packages": {
-    "sugar": {}
+    "sugar": {},
+    "observatory": {},
+    "accounting": {}
   }
 }

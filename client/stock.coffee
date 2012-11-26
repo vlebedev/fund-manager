@@ -4,6 +4,10 @@ _.extend Template.stock,
 ## Computed fields and field formatters
 #######################################
 
+
+    color: ->
+        Changes.findOne(@_id)?.color
+
     lastTrade: ->
         accounting.formatNumber @lastTrade, 4
 
@@ -19,6 +23,10 @@ _.extend Template.stock,
 
     enable_tooltips: ->
         _.defer (-> $('[rel=tooltip]').tooltip()), ''
+
+    isAdmin: ->
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
+
 
 ##
 ## Template event handlers

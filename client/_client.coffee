@@ -1,3 +1,5 @@
+Changes = new Meteor.Collection 'price_changes'
+
 Session.set 'client_id', null
 Session.set 'transactions_selected', null
 Session.set 'stocks_selected', null
@@ -128,5 +130,26 @@ FmRouter = Backbone.Router.extend {
 
 Router = new FmRouter
 
+Meteor.subscribe 'instruments'
+Meteor.subscribe 'price_changes'
+
+Meteor.autosubscribe ->
+    Meteor.subscribe 'clients'
+    Meteor.subscribe 'assets'
+    Meteor.subscribe 'transactions'
+    username = Meteor.users.findOne(Meteor.user())?.username
+    
+    if username in ['admin', 'dev']
+        client_id = Clients.findOne({}, { sort: { symbol: 1 } })._id
+    else if username
+        username = username.toUpperCase()
+        client_id = Clients.findOne({ type: 'c', symbol: username })._id
+
+    Router.setMain client_id if username
+
 Meteor.startup ->
     Backbone.history.start pushState: true
+    Accounts.config { forbidClientAccountCreation: yes }
+    Accounts.ui.config { passwordSignupFields: 'USERNAME_ONLY' }
+
+
