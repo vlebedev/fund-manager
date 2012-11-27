@@ -47,8 +47,6 @@ Instruments = new Meteor.Collection 'instruments'
 
 Transactions = new Meteor.Collection 'transactions'
 
-TL = TLog.getLogger TLog.LOGLEVEL_MAX, true
-
 getFxRate = (symbol1, symbol2) ->
     fx = Instruments.findOne({ symbol: "#{symbol1}#{symbol2}=X" })
 
@@ -275,19 +273,33 @@ Meteor.methods {
                 }
             'ok'
 
-    'addClient': (symbol, name, type) ->
+    'addClient': (symbol, name, type, email, password) ->
         symbol = symbol.trim().toUpperCase()
 
-        Clients.insert {
-            symbol
-            name
-            type
-            date_registered: new Date()
-        } unless alreadyExists = Clients.find({ symbol }).count()
+        return "Client or fund <strong>#{symbol}</strong> is already registered." if Clients.find({ symbol }).count()
 
-        return "Client <strong>#{symbol}</strong> is already registered." if alreadyExists
-
-        if type is 'f'
+        if type is 'c'
+            userId = Accounts.createUser {
+                username: symbol.toLowerCase()
+                email
+                password
+                profile: { name }
+            }
+            Clients.insert {
+                symbol
+                name
+                type
+                users: [userId]
+                date_registered: new Date()
+            } 
+        else if type is 'f'
+            Clients.insert {
+                symbol
+                name
+                type
+                users: []
+                date_registered: new Date()
+            } 
             Instruments.insert {
                 symbol
                 name
@@ -298,6 +310,8 @@ Meteor.methods {
                 shares: 0
                 client_list: []
             }
+        else 
+            return "Unknown client type: '#{type}'."
 
         'ok'
 
@@ -313,6 +327,9 @@ Meteor.methods {
             return "Cannot delete fund <strong>#{symbol}</strong>, because it has active shares." if Instruments.findOne({ symbol }).shares
             return "Cannot delete fund <strong>#{symbol}</strong>, there is at least one client with account opened in #{symbol} shares." if Assets.find({ symbol }).count()
             Instruments.remove { symbol }
+
+        if client.type is 'c'
+            Meteor.users.remove { username: symbol.toLowerCase() }
 
         Clients.remove { symbol }
 
@@ -381,7 +398,8 @@ Meteor.methods {
         if account.type is 'f'
             fundAssetsValue = getClientTotalAssetsValue account.symbol
             divider = fundNewTotalShares = Instruments.findOne({ symbol: account.symbol }).shares + amount
-            
+            userId = Meteor.users.findOne({ username: Clients.findOne(account.client_id)?.symbol.toLowerCase() })?._id
+
             if fundNewTotalShares is 0
                 divider = 1
 
@@ -395,6 +413,11 @@ Meteor.methods {
                         client_list: account.client_id 
                     }
                 }
+                Clients.update { symbol: account.symbol }, {
+                    $addToSet: { 
+                        users: userId 
+                    }
+                }
             else
                 Instruments.update { symbol: account.symbol }, {
                     $set: { 
@@ -405,9 +428,13 @@ Meteor.methods {
                         client_list: account.client_id 
                     }
                 }
-        
+                Clients.update { symbol: account.symbol }, {
+                    $pull: { 
+                        users: userId 
+                    }
+                }
+
         date = new Date()
-        # TL.verbose "Transaction timestamp: #{date.getTime()}", "EXECUTE_TRANSACTION"
 
         Transactions.insert {
             date
@@ -454,4 +481,30 @@ Meteor.methods {
             Transactions.remove lastTransaction._id
 
         'ok'
+
+    'flushDatabase': ->
+        Assets.remove({})
+        Clients.remove({})
+        Instruments.remove({})
+        Transactions.remove({})
+        Meteor.users.remove({})
+        Accounts.createUser {
+            username: "dev"
+            email: "dev@mail.xox"
+            password: "1234"
+            profile: { name: "John Doe" }
+        } 
+        Accounts.createUser {
+            username: "admin"
+            email: "admin@mail.xox"
+            password: "1234"
+            profile: { name: "John Doe II" }
+        } 
+        Instruments.insert { symbol: 'USD', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'RUB', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'USDRUB=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'RUBUSD=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'LKOH.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'SNGS.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'VIP', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
 }

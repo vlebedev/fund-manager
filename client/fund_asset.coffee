@@ -5,10 +5,10 @@ _.extend Template.fund_asset,
 #######################################
 
     value: ->
-        accounting.formatNumber getAssetValueInUSD('', @symbol, @amount), 2
+        getAssetValueInUSD('', @symbol, @amount).format(2)
 
     amount: ->
-        accounting.formatNumber @amount
+        @amount.format()
 
     enable_tooltips: ->
         _.defer (-> $('[rel=tooltip]').tooltip()), ''

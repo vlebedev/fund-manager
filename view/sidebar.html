@@ -39,6 +39,8 @@
                 {{#if add_new_client_selected}}
                     <p></p><p><input type="text" class="input-medium" id="new_client_symbol" placeholder="CLIENT CODE"/>
                     <input type="text" class="input-large" id="new_client_name" placeholder="CLIENT NAME"/>
+                    <input type="text" class="input-large" id="new_client_email" placeholder="CLIENT E-MAIL"/>
+                    <input type="text" class="input-large" id="new_client_password" placeholder="PASSWORD"/>
                     <input type="submit" class="btn btn-small btn-primary" id="add-client-btn" value="Add"/></p>
                 {{/if}}
                 <li class="add-new-fund {{add_new_fund_selected}}">
@@ -48,6 +50,11 @@
                     <p></p><p><input type="text" class="input-medium" id="new_fund_symbol" placeholder="FUND CODE"/>
                     <input type="text" class="input-large" id="new_fund_name" placeholder="FUND NAME"/>
                     <input type="submit" class="btn btn-small btn-primary" id="add-fund-btn" value="Add"/></p>
+                {{/if}}
+                {{#if isDeveloper}}
+                <li>
+                    <button class="btn btn-danger btn-small" id="flush-database" href="#">FLUSH DATABASE</a>
+                </li>
                 {{/if}}
             {{/if}}
         </ul>

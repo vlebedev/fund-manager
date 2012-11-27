@@ -5,7 +5,7 @@ _.extend Template.monetary_asset,
 #######################################
 
     amount: ->
-        accounting.formatNumber @amount, 2
+        @amount.format(2)
 
     enable_tooltips: ->
         _.defer (-> $('[rel=tooltip]').tooltip()), ''

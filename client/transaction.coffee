@@ -10,10 +10,10 @@ _.extend Template.transaction,
         Assets.findOne(@account_id)?.symbol
 
     amount: ->
-        accounting.formatNumber @amount, 2
+        @amount.format(2)
 
     balance: ->
-        accounting.formatNumber @balance, 2
+        @balance.format(2)
 
     isOnTab: ->
         Session.get 'client_id'

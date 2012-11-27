@@ -130,22 +130,21 @@ FmRouter = Backbone.Router.extend {
 
 Router = new FmRouter
 
-Meteor.subscribe 'instruments'
-Meteor.subscribe 'price_changes'
-
 Meteor.autosubscribe ->
+    Meteor.subscribe 'instruments'
+    Meteor.subscribe 'price_changes'
     Meteor.subscribe 'clients'
     Meteor.subscribe 'assets'
     Meteor.subscribe 'transactions'
-    username = Meteor.users.findOne(Meteor.user())?.username
-    
+    username = Meteor.users.findOne(Meteor.userId())?.username
+
     if username in ['admin', 'dev']
-        client_id = Clients.findOne({}, { sort: { symbol: 1 } })._id
+        client_id = Clients.findOne({}, { sort: { symbol: 1 } })?._id
     else if username
         username = username.toUpperCase()
-        client_id = Clients.findOne({ type: 'c', symbol: username })._id
+        client_id = Clients.findOne({ type: 'c', symbol: username })?._id
 
-    Router.setMain client_id if username
+    Router.setMain client_id if client_id
 
 Meteor.startup ->
     Backbone.history.start pushState: true

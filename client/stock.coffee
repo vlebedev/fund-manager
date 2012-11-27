@@ -9,10 +9,10 @@ _.extend Template.stock,
         Changes.findOne(@_id)?.color
 
     lastTrade: ->
-        accounting.formatNumber @lastTrade, 4
+        @lastTrade.format(4)
 
     prevClose: ->
-        accounting.formatNumber @prevClose, 4
+        @prevClose.format(4)
 
     stock_class: ->
         if @isUnlisted then 'unlisted' else ''

@@ -9,8 +9,6 @@ backbone
 coffeescript
 http
 sugar
-observatory
 accounts-password
 accounts-ui
 bootstrap
-accounting

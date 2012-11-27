@@ -7,8 +7,7 @@ _.extend Template.assets_tab,
     total_assets: ->
         client_id = Session.get 'client_id'
         client = Clients.findOne client_id
-        # TL.verbose "client_id: #{client?._id} #{client?.symbol}", "ASSETS_TAB"
-        accounting.formatNumber getClientTotalAssetsValue(client.symbol), 2 if client
+        getClientTotalAssetsValue(client.symbol).format(2) if client
 
     isAdmin: ->
         Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']

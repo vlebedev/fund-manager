@@ -159,8 +159,11 @@ Template.main.events {
 
                     if result is 'ok'
                         Session.set 'client_id', null
+                    else
+                        newAlert 'alert-error', result
 
-                    newAlert 'alert-error', result unless result is 'ok'
+            #client_id = Clients.findOne({}, { sort: { symbol: 1 } })?._id
+            #Router.setMain client_id if client_id
 }
 
 Template.main.events okCancelEvents '#stock-name', {

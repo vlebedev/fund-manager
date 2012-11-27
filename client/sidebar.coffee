@@ -30,10 +30,11 @@ _.extend Template.sidebar,
     add_new_fund_selected: ->
         Session.get 'add_new_fund_selected'
 
+    isDeveloper: ->
+        Meteor.users.findOne(Meteor.user())?.username is 'dev'
+
     isAdmin: ->
-        devId = Meteor.users?.findOne({ username: "dev" })?._id
-        adminId = Meteor.users?.findOne({ username: "admin" })?._id
-        (devId && (Meteor.userId() is devId)) || (adminId && (Meteor.userId() is adminId))
+        Meteor.users.findOne(Meteor.user())?.username in ['admin', 'dev']
 
 ##
 ## Template event handlers
@@ -76,6 +77,8 @@ Template.sidebar.events {
         evt.preventDefault()
         symbol = $('#new_client_symbol').val().trim().toUpperCase()
         name = $('#new_client_name').val().trim()
+        email = $('#new_client_email').val().trim()
+        password = $('#new_client_password').val().trim()
 
         if !symbol
             newAlert 'alert-error', "Please enter client's code. Example: <strong>C009</strong>"
@@ -85,7 +88,15 @@ Template.sidebar.events {
             newAlert 'alert-error', "Please enter client's name. Example: <strong>Barents Group LLC</strong>"
             return
 
-        Meteor.call 'addClient', symbol, name, 'c',
+        if !email
+            newAlert 'alert-error', "Please enter client's e-mail."
+            return
+
+        if !password
+            newAlert 'alert-error', "Please enter client's password."
+            return
+
+        Meteor.call 'addClient', symbol, name, 'c', email, password,
             (error, result) ->
 
                 if result isnt 'ok'
@@ -93,6 +104,8 @@ Template.sidebar.events {
                 else
                     $('#new_client_symbol').val('')
                     $('#new_client_name').val('')
+                    $('#new_client_email').val('')
+                    $('#new_client_password').val('')
 
     'click #add-fund-btn': (evt) ->
         evt.preventDefault()
@@ -115,6 +128,9 @@ Template.sidebar.events {
                 else
                     $('#new_fund_symbol').val('')
                     $('#new_fund_name').val('')
+
+    'click #flush-database': (evt) ->
+        Meteor.call 'flushDatabase'
 
     'click .client, click .transactions, click .stocks, click .fx, click .funds, click .add-new-client, click .add-new-fund': (evt) ->
         evt.preventDefault()

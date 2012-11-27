@@ -8,10 +8,10 @@ _.extend Template.fund,
         Changes.findOne(@_id)?.color
 
     shares: ->
-        accounting.formatNumber @shares, 2
+        @shares.format(2)
 
     assets: ->
-        accounting.formatNumber @shares*@lastTrade, 2
+        (@shares*@lastTrade).format(2)
 
     lastTrade: ->
-        accounting.formatNumber @lastTrade, 2
+        @lastTrade.format(2)
