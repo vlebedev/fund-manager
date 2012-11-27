@@ -166,7 +166,7 @@ Template.main.events {
             #Router.setMain client_id if client_id
 }
 
-Template.main.events okCancelEvents '#stock-name', {
+Template.main.events okCancelEvents '#stock-symbol', {
 
     ok: (symbol, evt) ->
         Meteor.call 'addInstrument', symbol, 's', 
@@ -175,7 +175,7 @@ Template.main.events okCancelEvents '#stock-name', {
         evt.target.value = ""
 }
 
-Template.main.events okCancelEvents '#fxpair-name', {
+Template.main.events okCancelEvents '#fxpair-symbol', {
 
     ok: (symbol, evt) ->
         Meteor.call 'addInstrument', symbol, 'x',

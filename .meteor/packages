@@ -8,7 +8,7 @@ preserve-inputs
 backbone
 coffeescript
 http
-sugar
 accounts-password
 accounts-ui
 bootstrap
+sugar

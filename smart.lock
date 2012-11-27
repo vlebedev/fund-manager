@@ -6,25 +6,13 @@
   },
   "dependencies": {
     "basePackages": {
-      "sugar": {},
-      "observatory": {},
-      "accounting": {}
+      "sugar": {}
     },
     "packages": {
       "sugar": {
         "git": "https://github.com/bevanhunt/meteor-sugar.git",
         "tag": "v0.0.9",
         "commit": "751a4465e0a7d7e4e800e794ca1e6a449e15e63d"
-      },
-      "observatory": {
-        "git": "https://github.com/jhoxray/observatory.git",
-        "tag": "v0.1.8",
-        "commit": "08188f96361dbdbec1855ee616bbb4c03543b1ea"
-      },
-      "accounting": {
-        "git": "https://github.com/IainShigeoka/meteor-accounting.git",
-        "tag": "v0.3.2.3",
-        "commit": "330cf532e6ac7282cf85ef3b83a54c1a25f5bdae"
       }
     }
   }
