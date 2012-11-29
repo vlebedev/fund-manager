@@ -82,6 +82,16 @@ Meteor.publish 'price_changes', ->
 
 Meteor.startup ->
 
+    rootUrl = process.env.ROOT_URL 
+    console.log "Using mongodb instance at #{process.env.MONGO_URL}"
+
+    if rootUrl isnt 'http://localhost:3000'
+        # running on Heroku
+        console.log 'Starting up on Heroku'
+    else 
+        # running on localhost
+        console.log 'Starting up locally'
+
     Accounts.createUser {
         username: "dev"
         email: "dev@mail.xox"

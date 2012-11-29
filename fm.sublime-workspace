@@ -4,12 +4,8 @@
 		"selected_items":
 		[
 			[
-				"assets",
-				"assets"
-			],
-			[
-				"c001",
-				"c001"
+				"chan",
+				"changedInstruments"
 			],
 			[
 				"ins",
@@ -87,7 +83,7 @@
 			"file": "client/_client.coffee",
 			"settings":
 			{
-				"buffer_size": 5060,
+				"buffer_size": 4545,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +91,7 @@
 			"file": "client/assets_tab.coffee",
 			"settings":
 			{
-				"buffer_size": 3812,
+				"buffer_size": 3751,
 				"line_ending": "Unix"
 			}
 		},
@@ -111,7 +107,7 @@
 			"file": "client/fund.coffee",
 			"settings":
 			{
-				"buffer_size": 305,
+				"buffer_size": 702,
 				"line_ending": "Unix"
 			}
 		},
@@ -119,7 +115,15 @@
 			"file": "client/fxpair.coffee",
 			"settings":
 			{
-				"buffer_size": 663,
+				"buffer_size": 904,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "client/stock.coffee",
+			"settings":
+			{
+				"buffer_size": 2099,
 				"line_ending": "Unix"
 			}
 		},
@@ -127,7 +131,7 @@
 			"file": "client/fund_asset.coffee",
 			"settings":
 			{
-				"buffer_size": 710,
+				"buffer_size": 651,
 				"line_ending": "Unix"
 			}
 		},
@@ -135,7 +139,7 @@
 			"file": "client/main.coffee",
 			"settings":
 			{
-				"buffer_size": 6085,
+				"buffer_size": 5779,
 				"line_ending": "Unix"
 			}
 		},
@@ -143,7 +147,7 @@
 			"file": "model/model.coffee",
 			"settings":
 			{
-				"buffer_size": 17753,
+				"buffer_size": 15355,
 				"line_ending": "Unix"
 			}
 		},
@@ -151,17 +155,8 @@
 			"file": "client/monetary_asset.coffee",
 			"settings":
 			{
-				"buffer_size": 653,
+				"buffer_size": 578,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/navbar.coffee",
-			"settings":
-			{
-				"buffer_size": 129,
-				"line_ending": "Unix",
-				"name": "Template.navbar.events {"
 			}
 		},
 		{
@@ -176,15 +171,7 @@
 			"file": "client/sidebar.coffee",
 			"settings":
 			{
-				"buffer_size": 4260,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "client/stock.coffee",
-			"settings":
-			{
-				"buffer_size": 1826,
+				"buffer_size": 3562,
 				"line_ending": "Unix"
 			}
 		},
@@ -192,7 +179,7 @@
 			"file": "client/stock_asset.coffee",
 			"settings":
 			{
-				"buffer_size": 715,
+				"buffer_size": 655,
 				"line_ending": "Unix"
 			}
 		},
@@ -200,7 +187,7 @@
 			"file": "client/transaction.coffee",
 			"settings":
 			{
-				"buffer_size": 476,
+				"buffer_size": 418,
 				"line_ending": "Unix",
 				"name": "_.extend Template.transaction,"
 			}
@@ -209,7 +196,23 @@
 			"file": "client/transaction_tab.coffee",
 			"settings":
 			{
-				"buffer_size": 1835,
+				"buffer_size": 1752,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/wal/Dropbox/work/todos/client/todos.js",
+			"settings":
+			{
+				"buffer_size": 7870,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/wal/Dropbox/work/todos/client/todos.html",
+			"settings":
+			{
+				"buffer_size": 2284,
 				"line_ending": "Unix"
 			}
 		},
@@ -225,7 +228,7 @@
 			"file": "view/body.html",
 			"settings":
 			{
-				"buffer_size": 319,
+				"buffer_size": 282,
 				"line_ending": "Unix"
 			}
 		},
@@ -233,7 +236,7 @@
 			"file": "view/navbar.html",
 			"settings":
 			{
-				"buffer_size": 982,
+				"buffer_size": 733,
 				"line_ending": "Unix"
 			}
 		},
@@ -241,7 +244,7 @@
 			"file": "view/sidebar.html",
 			"settings":
 			{
-				"buffer_size": 2792,
+				"buffer_size": 2164,
 				"line_ending": "Unix"
 			}
 		},
@@ -249,7 +252,7 @@
 			"file": "view/main.html",
 			"settings":
 			{
-				"buffer_size": 6184,
+				"buffer_size": 5684,
 				"line_ending": "Unix"
 			}
 		},
@@ -266,7 +269,7 @@
 			"file": "view/transactions_tab.html",
 			"settings":
 			{
-				"buffer_size": 1261,
+				"buffer_size": 1167,
 				"line_ending": "Unix"
 			}
 		},
@@ -282,7 +285,7 @@
 			"file": "view/assets_tab.html",
 			"settings":
 			{
-				"buffer_size": 2836,
+				"buffer_size": 2414,
 				"line_ending": "Unix"
 			}
 		},
@@ -290,7 +293,7 @@
 			"file": "view/fund_asset.html",
 			"settings":
 			{
-				"buffer_size": 492,
+				"buffer_size": 436,
 				"line_ending": "Unix"
 			}
 		},
@@ -298,7 +301,7 @@
 			"file": "view/monetary_asset.html",
 			"settings":
 			{
-				"buffer_size": 437,
+				"buffer_size": 381,
 				"line_ending": "Unix"
 			}
 		},
@@ -306,7 +309,7 @@
 			"file": "view/stock.html",
 			"settings":
 			{
-				"buffer_size": 1292,
+				"buffer_size": 1237,
 				"line_ending": "Unix"
 			}
 		},
@@ -314,7 +317,7 @@
 			"file": "view/stock_asset.html",
 			"settings":
 			{
-				"buffer_size": 549,
+				"buffer_size": 493,
 				"line_ending": "Unix"
 			}
 		},
@@ -322,7 +325,7 @@
 			"file": "view/fxpair.html",
 			"settings":
 			{
-				"buffer_size": 508,
+				"buffer_size": 453,
 				"line_ending": "Unix"
 			}
 		},
@@ -330,7 +333,7 @@
 			"file": "view/fund.html",
 			"settings":
 			{
-				"buffer_size": 381,
+				"buffer_size": 382,
 				"line_ending": "Unix"
 			}
 		},
@@ -339,6 +342,14 @@
 			"settings":
 			{
 				"buffer_size": 408,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/wal/Dropbox/work/kronos-monitor/server/server.coffee",
+			"settings":
+			{
+				"buffer_size": 7724,
 				"line_ending": "Unix"
 			}
 		}
@@ -399,9 +410,7 @@
 	},
 	"file_history":
 	[
-		"/Users/wal/Dropbox/work/todos/client/todos.js",
-		"/Users/wal/Dropbox/work/todos/server/publish.js",
-		"/Users/wal/Dropbox/work/todos/client/todos.html",
+		"/Users/wal/Dropbox/work/kronos-monitor/server/server.coffee",
 		"/Users/wal/Dropbox/work/fm/client/assets-tab.coffee",
 		"/Users/wal/Dropbox/work/fm/client/stock-asset.coffee",
 		"/Users/wal/Dropbox/work/fm/client/client.coffee",
@@ -414,6 +423,8 @@
 		"/Users/wal/Dropbox/work/fm/client/client_chooser.coffee.coffee",
 		"/Users/wal/Dropbox/work/fm/client/transactions_tab.html",
 		"/Users/wal/Dropbox/work/fm/model.coffee",
+		"/Users/wal/Dropbox/work/todos/client/todos.js",
+		"/Users/wal/Dropbox/work/todos/client/todos.html",
 		"/Users/wal/Dropbox/work/sketch/client/sketch.html",
 		"/Users/wal/Dropbox/work/sketch/model.js",
 		"/Users/wal/Dropbox/work/sketch/client/client.js",
@@ -431,7 +442,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -439,16 +450,9 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
-			"accounting",
-			"TL",
-			"TL.",
-			"flush()",
-			"Assets",
-			"Asse",
-			"Accounts",
 			"bootbox",
 			"Session.set 'add_fund_client_selected', null",
 			"DEBU",
@@ -477,7 +481,6 @@
 		"regex": false,
 		"replace_history":
 		[
-			"Assets",
 			"Session.set 'add_new_fund_selected', null",
 			"Date\\(\\)",
 			"Date()",
@@ -498,7 +501,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -506,15 +509,15 @@
 					"file": "client/_client.coffee",
 					"settings":
 					{
-						"buffer_size": 5060,
+						"buffer_size": 4545,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4873,
-								4873
+								603,
+								603
 							]
 						],
 						"settings":
@@ -524,7 +527,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1599.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -534,15 +537,15 @@
 					"file": "client/assets_tab.coffee",
 					"settings":
 					{
-						"buffer_size": 3812,
+						"buffer_size": 3751,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								223,
-								223
+								2533,
+								2934
 							]
 						],
 						"settings":
@@ -590,22 +593,20 @@
 					"file": "client/fund.coffee",
 					"settings":
 					{
-						"buffer_size": 305,
+						"buffer_size": 702,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								304,
-								304
+								108,
+								108
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -618,22 +619,20 @@
 					"file": "client/fxpair.coffee",
 					"settings":
 					{
-						"buffer_size": 663,
+						"buffer_size": 904,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								288,
-								288
+								493,
+								493
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -643,18 +642,18 @@
 				},
 				{
 					"buffer": 5,
-					"file": "client/fund_asset.coffee",
+					"file": "client/stock.coffee",
 					"settings":
 					{
-						"buffer_size": 710,
+						"buffer_size": 2099,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								204,
-								204
+								492,
+								492
 							]
 						],
 						"settings":
@@ -671,18 +670,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "client/main.coffee",
+					"file": "client/fund_asset.coffee",
 					"settings":
 					{
-						"buffer_size": 6085,
+						"buffer_size": 651,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5197,
-								5197
+								615,
+								615
 							]
 						],
 						"settings":
@@ -690,60 +689,6 @@
 							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2778.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "model/model.coffee",
-					"settings":
-					{
-						"buffer_size": 17753,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1211,
-								1211
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 513.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "client/monetary_asset.coffee",
-					"settings":
-					{
-						"buffer_size": 653,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								159,
-								159
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -752,24 +697,79 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "client/navbar.coffee",
+					"buffer": 7,
+					"file": "client/main.coffee",
 					"settings":
 					{
-						"buffer_size": 129,
+						"buffer_size": 5779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								104,
-								104
+								5779,
+								5779
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Template.navbar.events {",
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "model/model.coffee",
+					"settings":
+					{
+						"buffer_size": 15355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5643,
+								5643
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 678.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "client/monetary_asset.coffee",
+					"settings":
+					{
+						"buffer_size": 578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								118,
+								118
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -790,92 +790,8 @@
 						"selection":
 						[
 							[
-								1569,
-								1569
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 734.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "client/sidebar.coffee",
-					"settings":
-					{
-						"buffer_size": 4260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4058,
-								4058
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1672.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "client/stock.coffee",
-					"settings":
-					{
-						"buffer_size": 1826,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								257,
-								257
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 40.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "client/stock_asset.coffee",
-					"settings":
-					{
-						"buffer_size": 715,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								228,
-								228
+								15,
+								15
 							]
 						],
 						"settings":
@@ -891,19 +807,75 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "client/transaction.coffee",
+					"buffer": 11,
+					"file": "client/sidebar.coffee",
 					"settings":
 					{
-						"buffer_size": 476,
+						"buffer_size": 3562,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								334,
-								334
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1278.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "client/stock_asset.coffee",
+					"settings":
+					{
+						"buffer_size": 655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								632,
+								612
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "client/transaction.coffee",
+					"settings":
+					{
+						"buffer_size": 418,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								416,
+								416
 							]
 						],
 						"settings":
@@ -920,19 +892,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 14,
 					"file": "client/transaction_tab.coffee",
 					"settings":
 					{
-						"buffer_size": 1835,
+						"buffer_size": 1752,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								127,
-								127
+								1683,
+								1683
 							]
 						],
 						"settings":
@@ -942,7 +914,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 187.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/Users/wal/Dropbox/work/todos/client/todos.js",
+					"settings":
+					{
+						"buffer_size": 7870,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2305,
+								2305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "/Users/wal/Dropbox/work/todos/client/todos.html",
+					"settings":
+					{
+						"buffer_size": 2284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								653,
+								653
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -950,11 +978,11 @@
 			]
 		},
 		{
-			"selected": 4,
+			"selected": 16,
 			"sheets":
 			[
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "view/head.html",
 					"settings":
 					{
@@ -982,47 +1010,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "view/body.html",
 					"settings":
 					{
-						"buffer_size": 319,
+						"buffer_size": 282,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								289,
-								289
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "view/navbar.html",
-					"settings":
-					{
-						"buffer_size": 982,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								586,
-								586
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1039,46 +1039,18 @@
 				},
 				{
 					"buffer": 19,
-					"file": "view/sidebar.html",
+					"file": "view/navbar.html",
 					"settings":
 					{
-						"buffer_size": 2792,
+						"buffer_size": 733,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2646,
-								2646
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 380.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "view/main.html",
-					"settings":
-					{
-						"buffer_size": 6184,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6172,
-								6172
+								652,
+								652
 							]
 						],
 						"settings":
@@ -1094,7 +1066,63 @@
 					"type": "text"
 				},
 				{
+					"buffer": 20,
+					"file": "view/sidebar.html",
+					"settings":
+					{
+						"buffer_size": 2164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 138.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 21,
+					"file": "view/main.html",
+					"settings":
+					{
+						"buffer_size": 5684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1282,
+								1282
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 550.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
 					"file": "view/admin_tab.html",
 					"settings":
 					{
@@ -1105,8 +1133,8 @@
 						"selection":
 						[
 							[
-								157,
-								157
+								191,
+								191
 							]
 						],
 						"settings":
@@ -1121,19 +1149,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
 					"file": "view/transactions_tab.html",
 					"settings":
 					{
-						"buffer_size": 1261,
+						"buffer_size": 1167,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								793,
-								793
+								59,
+								39
 							]
 						],
 						"settings":
@@ -1149,7 +1177,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 24,
 					"file": "view/client_chooser.html",
 					"settings":
 					{
@@ -1175,47 +1203,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 25,
 					"file": "view/assets_tab.html",
 					"settings":
 					{
-						"buffer_size": 2836,
+						"buffer_size": 2414,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								482,
-								482
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"file": "view/fund_asset.html",
-					"settings":
-					{
-						"buffer_size": 492,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								444,
-								444
+								101,
+								101
 							]
 						],
 						"settings":
@@ -1232,18 +1232,18 @@
 				},
 				{
 					"buffer": 26,
-					"file": "view/monetary_asset.html",
+					"file": "view/fund_asset.html",
 					"settings":
 					{
-						"buffer_size": 437,
+						"buffer_size": 436,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								389,
-								389
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1260,18 +1260,18 @@
 				},
 				{
 					"buffer": 27,
-					"file": "view/stock.html",
+					"file": "view/monetary_asset.html",
 					"settings":
 					{
-						"buffer_size": 1292,
+						"buffer_size": 381,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1245,
-								1245
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1281,25 +1281,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 78.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 28,
-					"file": "view/stock_asset.html",
+					"file": "view/stock.html",
 					"settings":
 					{
-						"buffer_size": 549,
+						"buffer_size": 1237,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								501,
-								501
+								91,
+								91
 							]
 						],
 						"settings":
@@ -1316,18 +1316,18 @@
 				},
 				{
 					"buffer": 29,
-					"file": "view/fxpair.html",
+					"file": "view/stock_asset.html",
 					"settings":
 					{
-						"buffer_size": 508,
+						"buffer_size": 493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								462,
-								462
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1344,18 +1344,18 @@
 				},
 				{
 					"buffer": 30,
-					"file": "view/fund.html",
+					"file": "view/fxpair.html",
 					"settings":
 					{
-						"buffer_size": 381,
+						"buffer_size": 453,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								43,
-								43
+								57,
+								57
 							]
 						],
 						"settings":
@@ -1372,6 +1372,34 @@
 				},
 				{
 					"buffer": 31,
+					"file": "view/fund.html",
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 32,
 					"file": "view/transaction.html",
 					"settings":
 					{
@@ -1394,6 +1422,32 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "/Users/wal/Dropbox/work/kronos-monitor/server/server.coffee",
+					"settings":
+					{
+						"buffer_size": 7724,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2040,
+								2243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1000.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1441,7 +1495,7 @@
 	"menu_visible": true,
 	"output.coffeecompile_output":
 	{
-		"height": 128.0
+		"height": 100.0
 	},
 	"replace":
 	{

@@ -10,6 +10,8 @@
                          <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 
                         <ul class="dropdown-menu">
+                            <li><a tabindex="-1" class="change-password" data-toggle="modal" href="#changePasswordModal">Change password</a></li>
+                            <li class="divider"></li>
                             <li><a tabindex="-1" class="logout" href="#">Logout</a></li>
                         </ul>
 
@@ -21,4 +23,25 @@
             </div>
         </div>
     </div>
+    {{#if 1}}
+        <div class="modal hide" id="changePasswordModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Change Password</h3>
+            </div>
+            <div class="modal-body">
+                <div id="change-password-alert-area"></div>
+                <label>Old password:</label>
+                <input type="text" class="input-medium" id="old-password" placeholder="OLD PASSWORD"/>
+                <label>New password:</label>
+                <input type="text" class="input-medium" id="new-password" placeholder="NEW PASSWORD"/><br>
+                <label>New password one more time:</label>
+                <input type="text" class="input-medium" id="new-password-again" placeholder="NEW PASSWORD"/><br>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-primary" id="change-password-btn">Change Password</a>
+            </div>
+        </div>
+    {{/if}}
 </template>
