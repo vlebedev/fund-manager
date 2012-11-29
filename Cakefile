@@ -7,6 +7,7 @@ task 'run', 'run project in local mode', (options) =>
         env: process.env
 
 task 'deploy', 'deploy project to heroku', (options) =>
+    spawn 'git', ['push', 'origin', 'master'], stdio: 'inherit'
     spawn 'git', ['push', 'heroku', 'master'], stdio: 'inherit'
 
 task 'pull', 'pull production database to local machine', (options) =>

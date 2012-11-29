@@ -71,6 +71,8 @@ FmRouter = Backbone.Router.extend {
         'stocks': 'stocks'
         'fx': 'fx'
         'funds': 'funds'
+        'add_new_client': 'add_new_client'
+        'add_new_fund': 'add_new_fund'
         ':client_id': 'clients' 
         },
 
@@ -113,6 +115,26 @@ FmRouter = Backbone.Router.extend {
         Session.set 'trans_client_id', null
         Session.set 'add_new_client_selected', null
         Session.set 'add_new_fund_selected', null
+
+    add_new_client: ->
+        Session.set 'client_id', null
+        Session.set 'transactions_selected', null
+        Session.set 'stocks_selected', null
+        Session.set 'fx_selected', null
+        Session.set 'funds_selected', null
+        Session.set 'trans_client_id', null
+        Session.set 'add_new_client_selected', 'active'
+        Session.set 'add_new_fund_selected', null
+
+    add_new_fund: ->
+        Session.set 'client_id', null
+        Session.set 'transactions_selected', null
+        Session.set 'stocks_selected', null
+        Session.set 'fx_selected', null
+        Session.set 'funds_selected', null
+        Session.set 'trans_client_id', null
+        Session.set 'add_new_client_selected', null
+        Session.set 'add_new_fund_selected', 'active'
 
     clients: (client_id) ->
         Session.set 'client_id', client_id

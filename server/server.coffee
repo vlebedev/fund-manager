@@ -59,7 +59,8 @@ Meteor.publish 'price_changes', ->
                 color = 'error'
 
             uids.push newDoc._id unless newDoc._id in uids
-            self.set 'price_changes', newDoc._id, { color }
+            time = Date.now()
+            self.set 'price_changes', newDoc._id, { color, time }
             self.flush()
 
         moved: (doc, oldIdx, newIdx) ->
@@ -75,7 +76,7 @@ Meteor.publish 'price_changes', ->
         handle.stop()
 
         for uid in uids
-            self.unset 'price_changes', uid, ['color']
+            self.unset 'price_changes', uid, ['color', 'time']
 
         self.flush()
 

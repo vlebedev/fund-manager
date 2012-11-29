@@ -58,20 +58,10 @@ Template.sidebar.events {
         Router.setMain 'funds'
 
     'mousedown .add-new-client': (evt) ->
-        Session.set 'transactions_selected', null
-        Session.set 'stocks_selected', null
-        Session.set 'fx_selected', null
-        Session.set 'funds_selected', null
-        Session.set 'add_new_client_selected', 'active'
-        Session.set 'add_new_fund_selected', null
+        Router.setMain 'add_new_client'
 
     'mousedown .add-new-fund': (evt) ->
-        Session.set 'transactions_selected', null
-        Session.set 'stocks_selected', null
-        Session.set 'fx_selected', null
-        Session.set 'funds_selected', null
-        Session.set 'add_new_client_selected', null
-        Session.set 'add_new_fund_selected', 'active'
+        Router.setMain 'add_new_fund'
 
     'click #add-client-btn': (evt) ->
         evt.preventDefault()
