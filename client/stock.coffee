@@ -7,12 +7,16 @@ _.extend Template.stock,
 
     color: ->
         change = Changes.findOne(@_id)
+        symbol = Instruments.findOne(@_id).symbol
         if change
-            if (Date.now()-change.time) >= 60000
+            if (Date.now()-change.time) >= 120000
+                console.log "#{symbol}: unchanged @ #{Date.create().format()}, last update: #{Date.create(change.time).format()}"
                 ''
             else
+                console.log "#{symbol}: #{change.color} @ #{Date.create().format()}, last update: #{Date.create(change.time).format()}"
                 change.color
         else
+            console.log "#{symbol}: unchanged @ #{Date.create().format()}, last update: #{Date.create().format()}"
             ''
 
     lastTrade: ->
