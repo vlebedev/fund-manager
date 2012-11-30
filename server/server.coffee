@@ -59,7 +59,8 @@ Meteor.publish 'price_changes', ->
                 color = 'error'
 
             uids.push newDoc._id unless newDoc._id in uids
-            time = Date.now()
+            time = Date.utc.create().getTime()
+            console.log time
             self.set 'price_changes', newDoc._id, { color, time }
             self.flush()
 
