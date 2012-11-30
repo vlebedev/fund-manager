@@ -5,14 +5,7 @@ _.extend Template.fxpair,
 #######################################
 
     color: ->
-        change = Changes.findOne(@_id)
-        if change
-            if (Date.now()-change.time) >= 60000
-                ''
-            else
-                change.color
-        else
-            ''
+        Changes.findOne(@_id)?.color
 
     symbol: ->
         @symbol.slice 0,6

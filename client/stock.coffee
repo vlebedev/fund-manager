@@ -6,23 +6,23 @@ _.extend Template.stock,
 
 
     color: ->
-        change = Changes.findOne(@_id)
-        symbol = Instruments.findOne(@_id).symbol
-        timeNow = Date.utc.create().getTime()
+        Changes.findOne(@_id)?.color
 
-        if change
-            if (timeNow-change.time) >= 120000
-                console.log "#{symbol}: unchanged @ #{Date.utc.create().format()}, last update: #{Date.utc.create(change.time).format()}"
-                ''
-            else
-                console.log "#{symbol}: #{change.color} @ #{Date.utc.create().format()}, last update: #{Date.utc.create(change.time).format()}"
-                change.color
+    colorToPrevClose: ->
+        changePct = if @prevClose then 100*(@lastTrade-@prevClose)/@prevClose else 0
+        if changePct > 0
+            'text-success'
+        else if changePct < 0
+            'text-error'
         else
-            console.log "#{symbol}: unchanged @ #{Date.utc.create().format()}, last update: never"
             ''
 
     lastTrade: ->
         @lastTrade.format(4)
+
+    changePct: ->
+        changePct = if @prevClose then 100*(@lastTrade-@prevClose)/@prevClose else 0
+        changePct.format(2)
 
     prevClose: ->
         @prevClose.format(4)

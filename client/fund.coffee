@@ -5,14 +5,8 @@ _.extend Template.fund,
 #######################################
 
     color: ->
-        change = Changes.findOne(@_id)
-        if change
-            if (Date.now()-change.time) >= 60000
-                ''
-            else
-                change.color
-        else
-            ''
+        Changes.findOne(@_id)?.color
+
 
     shares: ->
         @shares.format(2)

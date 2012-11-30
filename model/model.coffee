@@ -147,12 +147,13 @@ Meteor.methods {
 
                 Instruments.update { symbol: q.symbol },        # have to shrink num of fields in $set
                     $set:   {
-                        name:   q.Name,
-                        type: type,
-                        exchange: q.StockExchange,
-                        currency: currency,
-                        lastTrade: Number(q.LastTradePriceOnly),
+                        name:   q.Name
+                        type: type
+                        exchange: q.StockExchange
+                        currency: currency
+                        lastTrade: Number(q.LastTradePriceOnly)
                         prevClose: Number(q.PreviousClose)
+                        timestamp: Date.utc.create().getTime()
                     }
 
             fund_instruments = Instruments.find({ type: 'f' }).fetch()
@@ -162,7 +163,7 @@ Meteor.methods {
                 shares = fund.shares
                 if fund.shares is 0 
                     shares = 1
-                Instruments.update fund._id, { $set: { lastTrade: assetsValue/shares } }
+                Instruments.update fund._id, { $set: { lastTrade: assetsValue/shares, timestamp: Date.utc.create().getTime() } }
 
             undefined
 
@@ -182,6 +183,7 @@ Meteor.methods {
             currency
             lastTrade: Number(lastTrade)
             prevClose: 0
+            timestamp: Date.utc.create().getTime()
         }
 
         'ok'
@@ -197,6 +199,7 @@ Meteor.methods {
             $set: { 
                 lastTrade
                 prevClose
+                timestamp: Date.utc.create().getTime()
             }
         }
 
@@ -227,6 +230,7 @@ Meteor.methods {
                     currency: ''
                     lastTrade: 0
                     prevClose: 0
+                    timestamp: Date.utc.create().getTime()
                 }
                 fx = symbol + 'USD=X'
                 if Instruments.find({ symbol: fx }).count()
@@ -260,6 +264,7 @@ Meteor.methods {
                     currency: currency
                     lastTrade: Number(q.LastTradePriceOnly)
                     prevClose: Number(q.PreviousClose)
+                    timestamp: Date.utc.create().getTime()
             }
             if c1 and (c2 is 'USD')
                 Instruments.insert {
@@ -270,6 +275,7 @@ Meteor.methods {
                     currency: ''
                     lastTrade: 0
                     prevClose: 0
+                    timestamp: Date.utc.create().getTime()
                 }
             'ok'
 
@@ -309,6 +315,7 @@ Meteor.methods {
                 prevClose: ''
                 shares: 0
                 client_list: []
+                timestamp: Date.utc.create().getTime()
             }
         else 
             return "Unknown client type: '#{type}'."
@@ -408,6 +415,7 @@ Meteor.methods {
                     $set: { 
                         shares: fundNewTotalShares
                         lastTrade: fundAssetsValue/divider
+                        timestamp: Date.utc.create().getTime()
                     }
                     $addToSet: { 
                         client_list: account.client_id 
@@ -423,6 +431,7 @@ Meteor.methods {
                     $set: { 
                         shares: fundNewTotalShares
                         lastTrade: fundAssetsValue/divider
+                        timestamp: Date.utc.create().getTime()
                     }
                     $pull: { 
                         client_list: account.client_id 
@@ -463,6 +472,7 @@ Meteor.methods {
                         $set: { 
                             shares: fundNewTotalShares
                             lastTrade: fundAssetsValue/(fundNewTotalShares is 0 ? 1 : fundTotalShares)
+                            timestamp: Date.utc.create().getTime()
                         }
                         $addToSet: { client_list: account.client_id }
                     }
@@ -470,7 +480,8 @@ Meteor.methods {
                     Instruments.update { symbol: account.symbol }, {
                         $set: { 
                             shares: fundNewTotalShares 
-                            lastTrade: fundAssetsValue/(fundNewTotalShares is 0 ? 1 : fundTotalShares) 
+                            lastTrade: fundAssetsValue/(fundNewTotalShares is 0 ? 1 : fundTotalShares)
+                            timestamp: Date.utc.create().getTime()
                         }
                         $pull: { 
                             client_list: account.client_id
@@ -500,11 +511,11 @@ Meteor.methods {
             password: "1234"
             profile: { name: "John Doe II" }
         } 
-        Instruments.insert { symbol: 'USD', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'RUB', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'USDRUB=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'RUBUSD=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'LKOH.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'SNGS.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
-        Instruments.insert { symbol: 'VIP', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '' }
+        Instruments.insert { symbol: 'USD', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'RUB', name: '', type: 'm', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'USDRUB=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'RUBUSD=X', name: '', type: 'x', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'LKOH.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'SNGS.ME', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
+        Instruments.insert { symbol: 'VIP', name: '', type: 's', lastTrade: 0.0, prevClose: 0.0, exchange: '', timestamp: Date.utc.create().getTime() }
 }
